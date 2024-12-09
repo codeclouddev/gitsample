@@ -1,0 +1,44 @@
+docker run -it --name ansi-container ansible/galaxy /bin/bash
+ansible --version
+
+
+vi inventory.ini
+[local]
+localhost ansible_connection=local
+
+[docker_containers]
+container1 ansible_host=localhost ansible_connection=docker
+container2 ansible_host=localhost ansible_connection=docker
+
+localhost is used as the host for the local machine.
+The ansible_connection=docker option is used to specify that Ansible should use Docker to communicate with the container.
+
+Configure Ansible to Use Docker API
+vi ansible.cfg
+[defaults]
+hostfile = ./inventory.ini
+
+Ansible Playbook
+vi ansibledocker-playbook
+---
+- name: Manage Docker container
+  hosts: docker_containers
+  tasks:
+    - name: Start the container
+      docker_container:
+        name: "nginx_container"
+        image: "nginx:latest"
+        state: started
+        ports:
+          - "8081:80"
+
+ansible-playbook ansibledocker-playbook.yml
+
+
+
+
+
+
+
+
+
