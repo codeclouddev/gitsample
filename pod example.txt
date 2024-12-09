@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+    - name: c1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hey Everyone; sleep 5; done"]
+  restartPolicy: Never  # Defaults to Always if not specified
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+
+
+kubectl apply -f nginx-pod.yaml
+kubectl apply -f nginx-service.yaml
+kubectl apply -f nginx-deployment.yaml
+
+
+kubectl get pods
+kubectl get services
+kubectl get deployments
+
+Pod: A single instance of a running container (or a set of containers). It is the basic execution unit in Kubernetes.
+Service: Provides network access to Pods, creating a stable endpoint for interacting with Pods, typically used for load balancing.
+Deployment: Manages the lifecycle of Pods, handles scaling, updates, and ensures that the specified number of Pods are always running.
+
+http://localhost:80
+
+
+
+
+
+
+
+
+
+
+
