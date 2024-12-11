@@ -1,0 +1,10 @@
+Orcherstation tool
+k8s is an open sources
+it is used to manage container of our application
+
+kubernetes                Docker swarm  
+  Auto Scalling           no auto scalling
+lot Community             community
+difficult to set the cluster   easy to start cluser
+
+Kuberneres features 
