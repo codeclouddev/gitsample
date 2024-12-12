@@ -1,0 +1,201 @@
+git clone url (to download the files)
+Eg:(git clone https://github.com/ravikumar0539/testinggit.git )
+
+git status (to check files is newly added or not )
+
+	git add --all (to add all files)
+
+git add filename (you should move only particular file)
+
+git commit -m "give some message" (	ready to move remote repo)
+
+git push origin branchname (changes pushed to server)
+
+git pull origin branchname (pull the latest code from remote repo)
+
+git stash save "any name" (save my code in temporary workspace)
+
+git stash pop (remove the temporary work and get into local workspace)
+
+git branch (get all the branches)
+
+git checkout -b branchname (create new branchname)
+
+git checkout branchname (switch to any branch)
+
+
+Create 2 servers 
+yum install update -y
+yum install git  -y
+git --version
+which git
+git config --global user.name "abc"
+git config --global user.name "abc@ggmail.com" 
+git config --list
+
+
+mkdir dev1
+cd dev1
+git init
+create the file using vi or touch command
+git status
+git add .
+git commit -m "day1"
+git status
+create new file
+git add -all
+git status
+git commit -m "day2"
+git log
+git show commit id
+git remote add origin github url
+git push -u origin main
+enter username and password
+
+Working of Another Developer
+mkdir dev2
+cd dev2
+git init
+git remote add origin github url
+
+git remote add origin https://github.com/codeclouddev/gitsample.git
+
+
+git pull -u origin main
+git log
+git show commitid
+git status
+git add .
+git commit -m "day3"
+git status
+git log
+git push origin main
+git log --oneline
+
+Branch
+TO show all the branch
+git branch
+Create a new branch
+git branch branchname - create new branch
+git branch mybranch -  
+git branch - it will show all the branch
+To change one branch to another branch
+git checkout branchname
+ls -  you will see all the file which was in main branch
+git log --oneline
+touch file1
+ls
+git add .
+git commit -m "commit from diffrent branch"
+git log --oneline
+git checkout main
+git log --oneline  - you can not see the commit whitch was done in newly created branch
+ls
+git branch
+git checkout mybranch
+touch file2
+ls
+git checkout main
+ls  -  it will show all the file untill you do not add or commit
+git checkout mybranch
+git add .
+git commit -m "changes"
+git log --oneline
+git checkout main
+ls -  now you will not see the file
+
+Merge
+git merge mybranch
+ls
+git log --oneline
+git log 
+git push origin main
+git branch 
+
+Merge Conflict(data different in all the files when the files are saved with the same name)
+git branch  
+ls 
+vi newfile add the content 
+git add .
+git commit -m "nextcommit"
+git checkout mybranch
+vi newfile add the contect
+git add .
+git commit -m "nextcommits"
+git branch 
+git checkout main
+git merge mybranch
+conflict proble solve
+vi newfile make the changes
+git add .
+git commit -m "conflict"
+git log --oneline
+
+Stashing
+
+
+To Stash the item
+git stash
+To see stashed item list
+git stash list
+To apply stashed item
+git stash apply stash{0}
+
+add commit
+git stash clear
+
+git branch
+vi file
+git add . 
+git commit -m "hello"
+vi file (edit the code)
+git stash 
+vi file  -  (you will see nothing)
+git stash list 
+vi file (edit somedata)
+git stash
+git stash list
+cat file
+git stash apply stash@{1}
+cat file
+git add .
+git commit -m "coderun"
+git stash apply stash@{0}
+vi file 
+git add .
+git commit -m "commits"
+git status
+git log --oneline
+git stash list
+git stash clear
+ 
+Reset(It works on before commit)
+to delete from the staging area
+git reset .
+git reset filename
+git reset --hard 
+
+vi files
+git add . 
+git commit -m "revert"
+git log --oneline
+git revert commitid
+
+Delete Untracked File
+git clean -n
+git clearn -f
+
+Tag
+git tag 
+git tag  -a tagname -m "message" 
+git show  tagname
+git tag -d tagname
+
+
+
+
+To delete the branch
+ 
+
+
+
